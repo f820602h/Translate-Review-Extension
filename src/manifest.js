@@ -10,6 +10,9 @@ const manifest = {
     },
     default_popup: "src/entries/popup/index.html",
   },
+  chrome_url_overrides: {
+    newtab: "src/assets/newtab/index.html",
+  },
   background: {
     service_worker: "src/entries/background/main.js",
   },
@@ -19,7 +22,7 @@ const manifest = {
       matches: ["*://*/*"],
     },
   ],
-  host_permissions: ["*://*/*"],
+  host_permissions: ["https://translate.google.com/", "*://*/*"],
   icons: {
     16: "icons/16.png",
     19: "icons/19.png",

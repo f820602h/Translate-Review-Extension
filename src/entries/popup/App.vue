@@ -2,10 +2,11 @@
   <main>
     <PageContent> Popup </PageContent>
   </main>
+  <p>{{ display }}</p>
 </template>
 
 <script setup>
-import PageContent from "~/components/PageContent.vue";
+import PageContent from "@/components/PageContent.vue";
 </script>
 
 <style>

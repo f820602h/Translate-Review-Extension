@@ -1,11 +1,21 @@
 <template>
   <div class="logo">
-    <img :src="logoImageUrl" height="50" alt="" />
+    <!-- <img :src="logoImageUrl" height="50" alt="" /> -->
   </div>
 </template>
 
 <script setup>
-import logo from "~/assets/logo.svg";
+import logo from "@/assets/logo.svg";
+
+import axios from "axios";
+import { onMounted } from "vue";
+
+onMounted(async () => {
+  const res = await axios.post("https://translation.googleapis.com/language/translate/v2/detect", null, {
+    params: { q: "mom", key: "AIzaSyAiVZdQkX_LwQ2gDW9_vx31J7jYc0QWdNo" },
+  });
+  console.log(res, res.data);
+});
 
 const logoImageUrl = new URL(logo, import.meta.url).href;
 </script>

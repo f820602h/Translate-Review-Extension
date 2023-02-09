@@ -7,16 +7,16 @@ import { getManifest } from "./src/manifest";
 // https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
     plugins: [
-      vue(),
+      vue({}),
       webExtension({
         manifest: getManifest(),
       }),
     ],
-    resolve: {
-      alias: {
-        "~": path.resolve(__dirname, "./src"),
-      },
-    },
   };
 });
