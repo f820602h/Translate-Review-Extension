@@ -1,7 +1,7 @@
 import browser from "webextension-polyfill";
+import { useStorage } from "@/composable/storage";
 
-browser.runtime.onInstalled.addListener(() => {
-  console.log("Extension installed");
+browser.runtime.onInstalled.addListener(async () => {
+  const { init } = useStorage();
+  await init();
 });
-
-browser.runtime;
