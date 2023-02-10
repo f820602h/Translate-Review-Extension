@@ -1,19 +1,7 @@
 <template>
-  <main>
-    <PageContent> Options </PageContent>
-  </main>
+  <div></div>
 </template>
 
-<script setup>
-import PageContent from "@/components/PageContent.vue";
-</script>
+<script setup></script>
 
-<style>
-main {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
+<style></style>

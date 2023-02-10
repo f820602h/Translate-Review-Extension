@@ -1,20 +1,20 @@
 <template>
   <main>
-    <PageContent> Popup </PageContent>
+    <TranslateInput></TranslateInput>
   </main>
-  <p>{{ display }}</p>
 </template>
 
 <script setup>
-import PageContent from "@/components/PageContent.vue";
+import TranslateInput from "@/components/TranslateInput.vue";
 </script>
 
 <style>
 main {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Titillium Web", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  padding: 16px;
+  color: white;
+  background: #1e1e20;
 }
 </style>
