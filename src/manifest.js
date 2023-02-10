@@ -10,6 +10,7 @@ const manifest = {
     },
     default_popup: "src/entries/popup/index.html",
   },
+  permissions: ["storage"],
   chrome_url_overrides: {
     newtab: "src/assets/newtab/index.html",
   },

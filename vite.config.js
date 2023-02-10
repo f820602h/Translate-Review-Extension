@@ -13,7 +13,7 @@ export default defineConfig(() => {
       },
     },
     plugins: [
-      vue({}),
+      vue(),
       webExtension({
         manifest: getManifest(),
       }),
