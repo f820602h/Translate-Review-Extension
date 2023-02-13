@@ -12,8 +12,14 @@ const manifest = {
   },
   permissions: ["storage"],
   chrome_url_overrides: {
-    newtab: "src/assets/newtab/index.html",
+    newtab: "src/entries/newtab/index.html",
   },
+  web_accessible_resources: [
+    {
+      resources: ["src/entries/newtab/index.html", "src/entries/newtab/script.js"],
+      matches: ["*://*/*"],
+    },
+  ],
   background: {
     service_worker: "src/entries/background/main.js",
   },

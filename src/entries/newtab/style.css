@@ -24,6 +24,7 @@ h1 {
   font-weight: bold;
   text-align: center;
   /* color: #646cff; */
+  background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
   background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
   background-clip: text;
   -webkit-background-clip: text;
