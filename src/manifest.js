@@ -16,7 +16,7 @@ const manifest = {
   },
   web_accessible_resources: [
     {
-      resources: ["src/entries/newtab/index.html", "src/entries/newtab/script.js"],
+      resources: ["src/entries/newtab/index.html"],
       matches: ["*://*/*"],
     },
   ],

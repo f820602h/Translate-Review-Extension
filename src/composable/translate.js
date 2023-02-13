@@ -4,7 +4,10 @@ import { computed, reactive, ref } from "vue";
 export function useTranslate() {
   const key = "AIzaSyAiVZdQkX_LwQ2gDW9_vx31J7jYc0QWdNo";
   const source = ref("");
-  const target = computed(() => (source.value.toLocaleLowerCase() === "zh-tw" ? "en" : "zh-tw"));
+  const target = computed(() => {
+    const lang = source.value.toLocaleLowerCase();
+    return lang === "zh-tw" || lang === "zh-cn" ? "en" : "zh-tw";
+  });
   const result = ref("");
 
   async function translate(text) {
