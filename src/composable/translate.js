@@ -2,7 +2,7 @@ import axios from "axios";
 import { computed, reactive, ref } from "vue";
 
 export function useTranslate() {
-  const key = "AIzaSyAiVZdQkX_LwQ2gDW9_vx31J7jYc0QWdNo";
+  const key = "YOUR_GCP_API_KEY"; // https://cloud.google.com/docs/authentication/api-keys
   const source = ref("");
   const target = computed(() => {
     const lang = source.value.toLocaleLowerCase();
