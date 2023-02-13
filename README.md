@@ -1,65 +1,21 @@
-# translate_review
+# Translate Review
 
-This template should help get you started developing a vue web extension in Vite.
+這是一個適用於 Chromium 核心瀏覽器的擴充套件，它可以幫助你進行網頁中的字詞翻譯，並將每次翻譯行為紀錄下來，你可以在新分頁中看見自己的翻譯歷史紀錄，你可以試著將最近、最多的翻譯字詞記憶下來，完成你的英文單字學習。
 
-## Usage Notes
+此專案所需相關技術知識如下：
 
-The extension manifest is defined in `src/manifest.js` and used by `@samrum/vite-plugin-web-extension` in the vite config.
+1. Vite
+2. Vue 3
+3. Chromium Extension
 
-Background, content scripts, options, and popup entry points exist in the `src/entries` directory. 
+> 此套件採用 Google Basic Translate API 進行翻譯，由於該服務會對大用量進行收費，所以請自行申請 Google Cloud Platform API 金鑰並打包專案並安裝，步驟如下。
 
-Content scripts are rendered by `src/entries/contentScript/renderContent.js` which renders content within a ShadowRoot
-and handles style injection for HMR and build modes.
+1. 申請 Google Cloud Platform API 金鑰 [請參考此](https://cloud.google.com/docs/authentication/api-keys)
+2. Download or Clone 此專案
+3. 將 API 金鑰輸入至 `src/composable/translate.js` 中的變數 `key` 中
+4. 執行 `npm run build` 進行打包
+5. 將打包過後的 `dist` 資料夾上傳至瀏覽器
 
-Otherwise, the project functions just like a regular Vite project.
+此專案採用 [@samrum/vite-plugin-web-extension](https://github.com/samrum/vite-plugin-web-extension) 作為 Extension 的主要打包工具
 
-
-
-HMR during development in Manifest V3 requires Chromium version >= 110.0.5480.0.
-
-Refer to [@samrum/vite-plugin-web-extension](https://github.com/samrum/vite-plugin-web-extension) for more usage notes.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-## Commands
-### Build
-#### Development, HMR
-
-Hot Module Reloading is used to load changes inline without requiring extension rebuilds and extension/page reloads
-Currently only works in Chromium based browsers.
-```sh
-npm run dev
-```
-
-#### Development, Watch
-
-Rebuilds extension on file changes. Requires a reload of the extension (and page reload if using content scripts)
-```sh
-npm run watch
-```
-
-#### Production
-
-Minifies and optimizes extension build
-```sh
-npm run build
-```
-
-### Load extension in browser
-
-Loads the contents of the dist directory into the specified browser
-```sh
-npm run serve:chrome
-```
-
-```sh
-npm run serve:firefox
-```
+歡迎 Fork 開發調整
