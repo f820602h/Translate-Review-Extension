@@ -6,28 +6,28 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useStorage } from "@/composable/storage";
+import { onMounted, ref, computed } from "vue";
+import { useOptionStorage } from "@/composable/optionStorage";
+import { useRecordStorage } from "@/composable/recordStorage";
 import { useTranslate } from "@/composable/translate";
 
 const show = ref(false);
 const toolElement = ref(null);
 
+const options = ref({});
 const text = ref("");
-const textLowerCase = computed(() => {
-  return text.value.toLocaleLowerCase();
-});
 
-const { write } = useStorage();
+const { write: writeRecord } = useRecordStorage();
+const { read: readOption } = useOptionStorage();
 const { word, translate, reset } = useTranslate();
 
+onMounted(async () => {
+  options.value = await readOption();
+});
+
 async function onTranslate() {
-  await translate(textLowerCase.value);
-  await write({
-    search: textLowerCase.value,
-    en: word.target === "en" ? word.result : textLowerCase.value,
-    zh: word.target === "en" ? textLowerCase.value : word.result,
-  });
+  await translate(text.value, options.value);
+  await writeRecord(word);
 }
 
 window.addEventListener("mousedown", () => {

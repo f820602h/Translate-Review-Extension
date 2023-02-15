@@ -1,40 +1,33 @@
 <template>
   <div>
-    <input v-if="allowSearch" type="text" v-model="text" @keydown.enter="onTranslate" />
+    <input type="text" v-model="text" @keydown.enter="onTranslate" />
     <button type="button" @click="onTranslate">翻譯</button>
   </div>
-  <div class="result">
+  <div v-if="word.result" class="result">
     {{ word.result }}
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import { useStorage } from "@/composable/storage";
+import { ref, computed, onMounted } from "vue";
+import { useOptionStorage } from "@/composable/optionStorage";
+import { useRecordStorage } from "@/composable/recordStorage";
 import { useTranslate } from "@/composable/translate";
 
-defineProps({
-  allowSearch: {
-    type: Boolean,
-    default: true,
-  },
-});
-
+const options = ref({});
 const text = ref("");
-const textLowerCase = computed(() => {
-  return text.value.toLocaleLowerCase();
-});
 
-const { write } = useStorage();
+const { write: writeRecord } = useRecordStorage();
+const { read: readOption } = useOptionStorage();
 const { word, translate } = useTranslate();
 
+onMounted(async () => {
+  options.value = await readOption();
+});
+
 async function onTranslate() {
-  await translate(textLowerCase.value);
-  await write({
-    search: textLowerCase.value,
-    en: word.target === "en" ? word.result : textLowerCase.value,
-    zh: word.target === "en" ? textLowerCase.value : word.result,
-  });
+  await translate(text.value, options.value);
+  await writeRecord(word);
 }
 </script>
 

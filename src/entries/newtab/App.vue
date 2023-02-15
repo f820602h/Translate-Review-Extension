@@ -20,9 +20,10 @@
             </div>
           </div>
           <div class="translate">
-            <span class="zh">{{ word.zh }}</span>
-            <span class="separate">／</span>
-            <span class="en">{{ word.en }}</span>
+            <span class="lang">{{ languageName(word.firstLang) }}</span>
+            <div class="content">{{ word.first.toLocaleLowerCase() }}</div>
+            <span class="lang">{{ languageName(word.foreignLang) }}</span>
+            <div class="content">{{ word.foreign.toLocaleLowerCase() }}</div>
           </div>
           <div class="remember">
             <span class="alert">{{ reminder(word) }}</span>
@@ -52,9 +53,10 @@
             </div>
           </div>
           <div class="translate">
-            <span class="zh">{{ word.zh }}</span>
-            <span class="separate">／</span>
-            <span class="en">{{ word.en }}</span>
+            <span class="lang">{{ languageName(word.firstLang) }}</span>
+            <div class="content">{{ word.first.toLocaleLowerCase() }}</div>
+            <span class="lang">{{ languageName(word.foreignLang) }}</span>
+            <div class="content">{{ word.foreign.toLocaleLowerCase() }}</div>
           </div>
           <div class="remember">
             <span class="alert">{{ reminder(word) }}</span>
@@ -67,10 +69,12 @@
 </template>
 
 <script setup>
-import { useStorage } from "@/composable/storage";
 import { ref, computed, onMounted } from "vue";
+import { useTranslate } from "@/composable/translate";
+import { useRecordStorage } from "@/composable/recordStorage";
 
-const { read, remove } = useStorage();
+const { languages, getSupportedLangs } = useTranslate();
+const { read: readRecord, remove: removeRecord } = useRecordStorage();
 const words = ref([]);
 
 const sortByDate = computed(() => {
@@ -107,6 +111,10 @@ function durationTimeFormatter(timestamp) {
   };
 }
 
+function languageName(wordLang) {
+  return languages.value.find((lang) => lang.language === wordLang).name;
+}
+
 function reminder(word) {
   if (word.forget) return "你曾經記住過這個單字，請花時間複習，別再忘記了！";
   if (word.times < 3) return "恭喜你接觸到了一個新的單字！";
@@ -115,12 +123,13 @@ function reminder(word) {
 }
 
 async function learned(word) {
-  await remove(word);
-  words.value = await read();
+  await removeRecord(word);
+  words.value = await readRecord();
 }
 
 onMounted(async () => {
-  words.value = await read();
+  await getSupportedLangs();
+  words.value = await readRecord();
 });
 </script>
 
@@ -139,7 +148,7 @@ body {
 }
 
 .container {
-  width: 500px;
+  width: 600px;
   margin: 0 auto;
 }
 
@@ -204,21 +213,22 @@ h3 {
   border-bottom: 1px solid #676e95;
   font-size: 18px;
   font-weight: normal;
-  color: #676e95;
+  color: #bcc0ff;
 }
 
-.group .word .translate {
-  display: flex;
-  align-items: center;
+.group .word .translate .content {
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: #bcc0ff;
 }
 
-.group .word .translate .separate {
-  margin: 0 4px;
-  font-size: 24px;
-}
-
-.group .word .translate .zh {
-  font-size: 24px;
+.group .word .translate .lang {
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  background: #676e95;
 }
 
 .group .word .remember {
