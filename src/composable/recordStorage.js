@@ -59,8 +59,9 @@ export function useRecordStorage() {
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.size) return;
 
-    for (let doc in querySnapshot) {
-      await setDoc(doc(db, collectionName, doc.id), { ...doc.data(), show: false });
+    for (let i = 0; i < querySnapshot.docs.length; i++) {
+      const data = { ...querySnapshot.docs[i].data(), show: false };
+      await setDoc(doc(db, collectionName, querySnapshot.docs[i].id), data);
     }
   }
 
