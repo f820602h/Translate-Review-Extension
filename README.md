@@ -14,9 +14,9 @@
 
 1. 使用 Google 帳號啟用 [Google Cloud Platform](https://cloud.google.com/)。
 2. 進入 Google Cloud Platform 控制台並新建專案，專案名稱可自訂。
-3. 前往專案的 [「API 和服務」頁籤](https://console.cloud.google.com/apis/dashboard)。
+3. 前往專案的 [「API 和服務」](https://console.cloud.google.com/apis/dashboard)。
 4. 進入 API 和服務中的[「程式庫」](https://console.cloud.google.com/apis/library)，搜尋 Google Basic Translate API 以及 Google Cloud Firestore API 並點擊啟用。
-5. 進入 API 和服務中的[憑證](https://console.cloud.google.com/apis/credentials)，點擊建立憑證，選擇 API 金鑰。
+5. 進入 API 和服務中的[「憑證」](https://console.cloud.google.com/apis/credentials)，點擊建立憑證，選擇 API 金鑰。
 6. 選擇金鑰並進行編輯，金鑰名稱可自訂，將金鑰進行 API 限制，選擇 Google Basic Translate API 以及 Google Cloud Firestore API 兩項並儲存。
 7. 請將金鑰暫時記下來。
 
