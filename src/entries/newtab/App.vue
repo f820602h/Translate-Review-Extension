@@ -59,12 +59,12 @@ const words = ref([]);
 const sortByDate = computed(() => {
   const copyWords = [...words.value];
   copyWords.sort((a, b) => b.date - a.date);
-  return copyWords.slice(0, showAll ? undefined : 3);
+  return copyWords.slice(0, showAll.value ? undefined : 3);
 });
 const sortByTimes = computed(() => {
   const copyWords = [...words.value];
   copyWords.sort((a, b) => b.times - a.times);
-  return copyWords.slice(0, showAll ? undefined : 3);
+  return copyWords.slice(0, showAll.value ? undefined : 3);
 });
 
 async function onRemember(word) {
