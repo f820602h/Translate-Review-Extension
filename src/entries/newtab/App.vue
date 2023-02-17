@@ -4,7 +4,7 @@
 
     <h3>近期翻譯</h3>
     <div class="group">
-      <template v-if="!words.length">
+      <template v-if="!sortByDate.length">
         <div class="empty">目前沒有任何翻譯紀錄</div>
       </template>
       <template v-else>
@@ -37,7 +37,7 @@
 
     <h3>翻譯次數排行</h3>
     <div class="group">
-      <template v-if="!words.length">
+      <template v-if="!sortByTimes.length">
         <div class="empty">目前沒有任何翻譯紀錄</div>
       </template>
       <template v-else>
@@ -130,6 +130,7 @@ async function learned(word) {
 onMounted(async () => {
   await getSupportedLangs();
   words.value = await readRecord();
+  console.log(words.value);
 });
 </script>
 

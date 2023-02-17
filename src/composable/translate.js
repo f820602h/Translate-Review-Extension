@@ -2,7 +2,7 @@ import axios from "axios";
 import { reactive, ref } from "vue";
 
 export function useTranslate() {
-  const key = "YOUR_API_KEY"; // https://cloud.google.com/docs/authentication/api-keys
+  const key = "YOUR_API_KEY";
 
   const languages = ref([]);
   async function getSupportedLangs() {
