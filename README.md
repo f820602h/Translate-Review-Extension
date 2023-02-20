@@ -27,8 +27,7 @@
 1. 使用 Google 帳號啟用 [Firebase](https://firebase.google.com/)。
 2. 進入 Firebase 控制台並新建專案，選擇將 Firebase 加入你的 Google Cloud 專案。
 3. 進入專案，並從側邊欄進入 Firestore，點擊「創建資料庫」。
-4. 點擊「新增集合」，將集合名稱設定為 `words`。
-5. 進入「規則」頁簽，將規則該為以下邏輯並發布。
+4. 進入「規則」頁簽，將規則該為以下邏輯並發布。
 
    ```
    rules_version = '2';
@@ -41,7 +40,7 @@
    }
    ```
 
-6. 進入 Firebase 專案的「專案設定／一般設定」，並移至「您的應用程式」區塊，將 `firebaseConfig` 區塊暫時記下來。
+5. 進入 Firebase 專案的「專案設定／一般設定」，並移至「您的應用程式」區塊，將 `firebaseConfig` 區塊暫時記下來。
    ```
    const firebaseConfig = {
       apiKey: "XXXXXXXXXXXXXXXXX",
