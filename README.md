@@ -13,11 +13,17 @@
 ### 1. Google Cloud Platform 準備：
 
 1. 使用 Google 帳號啟用 [Google Cloud Platform](https://cloud.google.com/)。
+
 2. 進入 Google Cloud Platform 控制台並新建專案，專案名稱可自訂。
+
 3. 前往專案的 [「API 和服務」](https://console.cloud.google.com/apis/dashboard)。
-4. 進入 API 和服務中的[「程式庫」](https://console.cloud.google.com/apis/library)，搜尋 Google Translate API 以及 Google Cloud Firestore API 並點擊啟用。
-5. 進入 API 和服務中的[「憑證」](https://console.cloud.google.com/apis/credentials)，點擊建立憑證，選擇 API 金鑰。
+
+4. 進入「API 和服務」中的[「程式庫」](https://console.cloud.google.com/apis/library)，搜尋 Google Translate API 以及 Google Cloud Firestore API 並點擊啟用。
+
+5. 進入「API 和服務」中的[「憑證」](https://console.cloud.google.com/apis/credentials)，點擊建立憑證，選擇 API 金鑰。
+
 6. 選擇金鑰並進行編輯，金鑰名稱可自訂，將金鑰進行 API 限制，選擇 Google Translate API 以及 Google Cloud Firestore API 兩項並儲存。
+
 7. 請將金鑰暫時記下來。
 
 <br />
@@ -25,8 +31,11 @@
 ### 2. Google Firebase 準備：
 
 1. 使用 Google 帳號啟用 [Firebase](https://firebase.google.com/)。
+
 2. 進入 Firebase 控制台並新建專案，選擇將 Firebase 加入你的 Google Cloud 專案。
+
 3. 進入專案，並從側邊欄進入 Firestore，點擊「創建資料庫」。
+
 4. 進入「規則」頁簽，將規則該為以下邏輯並發布。
 
    ```
@@ -40,7 +49,9 @@
    }
    ```
 
-5. 進入 Firebase 專案的「專案設定／一般設定」，並移至「您的應用程式」區塊，將 `firebaseConfig` 區塊暫時記下來。
+5. 進入 Firebase 專案的「專案設定／一般設定」，並移至「您的應用程式」區塊，選擇使用 web 平台新增應用程式（</>圖樣按鈕）。
+
+6. 輸入應用程式名稱，名稱可自訂，將 `firebaseConfig` 區塊暫時記下來
    ```
    const firebaseConfig = {
       apiKey: "XXXXXXXXXXXXXXXXX",
@@ -57,10 +68,15 @@
 ### 3. Github 專案準備：
 
 1.  Download or Clone 此專案。
+
 2.  進入專案目錄並執行 `npm i`。
+
 3.  將步驟 1-7 的 API 金鑰輸入至 `src/composable/translate.js` 中的變數 `key` 中。
+
 4.  將步驟 2-6 的 `firebaseConfig` 替換掉 `src/composable/recordStorage.js` 中的 `firebaseConfig`，並將 `apiKey` 改為步驟 1-7 的 API 金鑰。
+
 5.  執行 `npm run build` 進行打包。
+
 6.  將打包過後的 `dist` 資料夾上傳至瀏覽器的擴充工具中。
 
 <br />
